@@ -10,17 +10,21 @@
  * terms of the license agreement you entered into with SAP Hybris.
  */
 package concerttours.service.impl;
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+
+import concerttours.daos.BandDAO;
+import concerttours.model.BandModel;
 import de.hybris.bootstrap.annotations.UnitTest;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Before;
-import org.junit.Test;
-import concerttours.daos.BandDAO;
-import concerttours.model.BandModel;
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
  
 /**
  * This test file tests and demonstrates the behavior of the BandService's methods getAllBand, getBand and saveBand.
@@ -56,7 +60,7 @@ public class DefaultBandServiceUnitTest
         bandModel.setCode(BAND_CODE);
         bandModel.setName(BAND_NAME);
         bandModel.setAlbumSales(null);
-        bandModel.setHistory(BAND_HISTORY);
+        bandModel.setHistory(BAND_HISTORY, Locale.ENGLISH);
     }
     /**
      * This test tests and demonstrates that the Service's getAllBands method calls the DAOs' getBands method and returns

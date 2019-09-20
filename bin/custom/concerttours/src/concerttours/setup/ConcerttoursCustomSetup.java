@@ -1,12 +1,14 @@
 package concerttours.setup;
+
 import de.hybris.platform.core.initialization.SystemSetup;
 import de.hybris.platform.servicelayer.impex.ImportConfig;
 import de.hybris.platform.servicelayer.impex.ImportResult;
 import de.hybris.platform.servicelayer.impex.ImportService;
 import de.hybris.platform.servicelayer.impex.impl.StreamBasedImpExResource;
-import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.InputStream;
  
 @SystemSetup(extension = "concerttours")
 public class ConcerttoursCustomSetup
@@ -32,8 +34,12 @@ public class ConcerttoursCustomSetup
     public boolean addMyProjectData()
     {
         LOG.info("Starting custom project data loading for the Concerttours extension");
+        impexImport("/impex/essentialdata-mediaformats.impex");
         impexImport("/impex/concerttours-bands.impex");
+        impexImport("/impex/concerttours-bands-en.impex");
+        impexImport("/impex/concerttours-bands-de.impex");
         impexImport("/impex/concerttours-yBandTour.impex");
+        impexImport("/impex/essentialdata-constraints.impex");
         LOG.info("Custom project data loading for the Concerttours extension completed.");
         return true;
     }
