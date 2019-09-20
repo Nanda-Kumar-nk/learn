@@ -3,6 +3,7 @@
 <html>
 <title>Band List</title>
 <body>
+<h1>ConcertTours Project</h1>
 <h1>Band List</h1>
 <ul>
     <c:forEach var="band" items="${bands}">
