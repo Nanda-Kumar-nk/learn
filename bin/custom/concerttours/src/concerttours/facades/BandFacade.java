@@ -1,14 +1,11 @@
 package concerttours.facades;
-
-import concerttours.data.BandData;
-
 import java.util.List;
+import concerttours.data.BandData;
  
 public interface BandFacade
 {
-    /**
-     * Returns tehh BandDTO against the name provided
-     *
+     /**
+     * Returns the BandDTO against the name provided
      * @param name
      * @return
      */
