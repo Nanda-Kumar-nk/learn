@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 12 Sep, 2019 2:29:13 PM                     ---
+ * --- Generated at 20 Sep, 2019 3:37:58 PM                     ---
  * ----------------------------------------------------------------
  */
 package concerttours.jalo;
@@ -9,12 +9,17 @@ package concerttours.jalo;
 import concerttours.constants.ConcerttoursConstants;
 import concerttours.jalo.Band;
 import concerttours.jalo.Concert;
+import concerttours.jalo.News;
+import concerttours.jalo.NotLoremIpsumConstraint;
 import de.hybris.platform.jalo.GenericItem;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.JaloBusinessException;
+import de.hybris.platform.jalo.JaloInvalidParameterException;
 import de.hybris.platform.jalo.JaloSystemException;
 import de.hybris.platform.jalo.SessionContext;
+import de.hybris.platform.jalo.c2l.C2LManager;
+import de.hybris.platform.jalo.c2l.Language;
 import de.hybris.platform.jalo.enumeration.EnumerationValue;
 import de.hybris.platform.jalo.extension.Extension;
 import de.hybris.platform.jalo.link.Link;
@@ -274,6 +279,58 @@ public abstract class GeneratedConcerttoursManager extends Extension
 		return createConcert( getSession().getSessionContext(), attributeValues );
 	}
 	
+	public News createNews(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( ConcerttoursConstants.TC.NEWS );
+			return (News)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating News : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public News createNews(final Map attributeValues)
+	{
+		return createNews( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public NotLoremIpsumConstraint createNotLoremIpsumConstraint(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( ConcerttoursConstants.TC.NOTLOREMIPSUMCONSTRAINT );
+			return (NotLoremIpsumConstraint)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating NotLoremIpsumConstraint : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public NotLoremIpsumConstraint createNotLoremIpsumConstraint(final Map attributeValues)
+	{
+		return createNotLoremIpsumConstraint( getSession().getSessionContext(), attributeValues );
+	}
+	
 	@Override
 	public String getName()
 	{
@@ -286,7 +343,11 @@ public abstract class GeneratedConcerttoursManager extends Extension
 	 */
 	public String getHashtag(final SessionContext ctx, final Product item)
 	{
-		return (String)item.getProperty( ctx, ConcerttoursConstants.Attributes.Product.HASHTAG);
+		if( ctx == null || ctx.getLanguage() == null )
+		{
+			throw new JaloInvalidParameterException("GeneratedProduct.getHashtag requires a session language", 0 );
+		}
+		return (String)item.getLocalizedProperty( ctx, ConcerttoursConstants.Attributes.Product.HASHTAG);
 	}
 	
 	/**
@@ -299,12 +360,38 @@ public abstract class GeneratedConcerttoursManager extends Extension
 	}
 	
 	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.hashtag</code> attribute. 
+	 * @return the localized hashtag - hashtag of concert tour for social media
+	 */
+	public Map<Language,String> getAllHashtag(final SessionContext ctx, final Product item)
+	{
+		return (Map<Language,String>)item.getAllLocalizedProperties(ctx,ConcerttoursConstants.Attributes.Product.HASHTAG,C2LManager.getInstance().getAllLanguages());
+	}
+	
+	/**
+	 * <i>Generated method</i> - Getter of the <code>Product.hashtag</code> attribute. 
+	 * @return the localized hashtag - hashtag of concert tour for social media
+	 */
+	public Map<Language,String> getAllHashtag(final Product item)
+	{
+		return getAllHashtag( getSession().getSessionContext(), item );
+	}
+	
+	/**
 	 * <i>Generated method</i> - Setter of the <code>Product.hashtag</code> attribute. 
 	 * @param value the hashtag - hashtag of concert tour for social media
 	 */
 	public void setHashtag(final SessionContext ctx, final Product item, final String value)
 	{
-		item.setProperty(ctx, ConcerttoursConstants.Attributes.Product.HASHTAG,value);
+		if ( ctx == null) 
+		{
+			throw new JaloInvalidParameterException( "ctx is null", 0 );
+		}
+		if( ctx.getLanguage() == null )
+		{
+			throw new JaloInvalidParameterException("GeneratedProduct.setHashtag requires a session language", 0 );
+		}
+		item.setLocalizedProperty(ctx, ConcerttoursConstants.Attributes.Product.HASHTAG,value);
 	}
 	
 	/**
@@ -314,6 +401,24 @@ public abstract class GeneratedConcerttoursManager extends Extension
 	public void setHashtag(final Product item, final String value)
 	{
 		setHashtag( getSession().getSessionContext(), item, value );
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.hashtag</code> attribute. 
+	 * @param value the hashtag - hashtag of concert tour for social media
+	 */
+	public void setAllHashtag(final SessionContext ctx, final Product item, final Map<Language,String> value)
+	{
+		item.setAllLocalizedProperties(ctx,ConcerttoursConstants.Attributes.Product.HASHTAG,value);
+	}
+	
+	/**
+	 * <i>Generated method</i> - Setter of the <code>Product.hashtag</code> attribute. 
+	 * @param value the hashtag - hashtag of concert tour for social media
+	 */
+	public void setAllHashtag(final Product item, final Map<Language,String> value)
+	{
+		setAllHashtag( getSession().getSessionContext(), item, value );
 	}
 	
 }
