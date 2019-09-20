@@ -4,9 +4,11 @@ import concerttours.data.BandData;
  
 public interface BandFacade
 {
- /**
-    getBand with name
- **/
+     /**
+     * Returns tehh BandDTO against the name provided
+     * @param name
+     * @return
+     */
     BandData getBand(String name);
     List<BandData> getBands();
 }
