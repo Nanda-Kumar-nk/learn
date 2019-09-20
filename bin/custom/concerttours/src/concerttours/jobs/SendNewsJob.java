@@ -67,7 +67,7 @@ public class SendNewsJob extends AbstractJobPerformable<CronJobModel> {
             sendEmail(mailContentBuilder.toString());
         } catch (final EmailException e) {
             LOG.error("Problem sending new email. Note that org.apache.commons.mail.send() can block if behind a firewall/proxy.)");
-            LOG.error("Problem sending new email.", e);
+            LOG.error("Problem sending new email via sendNewsJob.", e);
             return new PerformResult(CronJobResult.FAILURE, CronJobStatus.FINISHED);
         }
         return new PerformResult(CronJobResult.SUCCESS, CronJobStatus.FINISHED);
