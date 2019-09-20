@@ -3,7 +3,8 @@
 <html>
 <title>Band List</title>
 <body>
-<h1>Band List</h1>
+<h2>ConcertTours Project</h2>
+<h2>Band List</h2>
 <ul>
     <c:forEach var="band" items="${bands}">
         <li><a href="./bands/${band.id}">${band.name}<img src="${band.imageURL}"/></a></li>
