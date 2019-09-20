@@ -4,6 +4,9 @@ import concerttours.data.BandData;
  
 public interface BandFacade
 {
+ /**
+    getBand with name
+ **/
     BandData getBand(String name);
     List<BandData> getBands();
 }
